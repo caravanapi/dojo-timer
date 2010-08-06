@@ -1,3 +1,4 @@
+.rvmrc
 config/database.yml
 db/schema.rb
 log/*.log
