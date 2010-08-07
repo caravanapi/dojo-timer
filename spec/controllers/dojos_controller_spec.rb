@@ -64,4 +64,42 @@ describe DojosController do
       assigns[:dojo].should == mock_dojo
     end
   end
+
+  describe "GET edit" do
+    it 'should expose dojo as @dojo' do
+      Dojo.stub!(:find).with('1').and_return(mock_dojo)
+      get :show, { :id => '1' }
+      assigns[:dojo] == mock_dojo
+    end
+
+    it 'render edit template' do
+      Dojo.stub!(:find).with('1').and_return(mock_dojo)
+      get :edit, { :id => '1' }
+      response.should render_template(:edit)
+    end
+  end
+
+  describe "PUT update" do
+    it 'should expose dojo as @dojo' do
+      Dojo.stub!(:find).with('1').and_return(mock_dojo(:update_attributes => true))
+      put :update, 'id' => '1'
+      assigns[:dojo].should == mock_dojo
+    end
+
+    describe 'with valids attributes' do
+      it 'should redirect to dojo' do
+        Dojo.stub!(:find).and_return(mock_dojo(:update_attributes => true))
+        put :update, 'id' => '1'
+        response.should redirect_to(dojo_url(mock_dojo))
+      end
+    end
+
+    describe 'without valids attributes' do
+      it 'should render edit template' do
+        Dojo.stub!(:find).and_return(mock_dojo(:update_attributes => false))
+        put :update, :id => '1'
+        response.should render_template(:edit)
+      end
+    end
+  end
 end
