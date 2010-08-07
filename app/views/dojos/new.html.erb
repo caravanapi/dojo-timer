@@ -1,4 +1,17 @@
 <% form_for @dojo do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :user_twitters %>
+    <%= f.text_field :user_twitters %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+  <p><%= link_to 'voltar', dojos_path %></p>
 <% end %>
