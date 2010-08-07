@@ -1,0 +1,5 @@
+<%= link_to 'Criar Dojo', new_dojo_path %>
+
+<% @dojos.each do |dojo| %>
+  <p><%=h link_to dojo.name, dojo %></p>
+<% end %>
