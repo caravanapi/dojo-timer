@@ -20,4 +20,18 @@ class DojosController < ApplicationController
       render :action => :new
     end
   end
+
+  def edit
+    @dojo = Dojo.find(params[:id])
+  end
+
+  def update
+    @dojo = Dojo.find(params[:id])
+
+    if @dojo.update_attributes(params[:dojo])
+      redirect_to @dojo
+    else
+      render :action => :edit
+    end
+  end
 end

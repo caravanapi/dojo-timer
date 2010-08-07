@@ -9,4 +9,8 @@ class Dojo < ActiveRecord::Base
   def user_twitters
     users.map{ |user| user.twitter }
   end
+
+  def after_initialize
+    self.time ||= 7
+  end
 end
