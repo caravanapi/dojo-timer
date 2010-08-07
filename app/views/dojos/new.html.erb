@@ -1,0 +1,11 @@
+<% form_for @dojo do |f| -%>
+  <p>
+    <%= f.label :name, "Nome" %>
+  </p>
+  <p>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+  </p>
+<% end -%>

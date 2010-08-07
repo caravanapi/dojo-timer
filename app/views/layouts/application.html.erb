@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Dojo Timer</title>
+    <%= stylesheet_link_tag "style" %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <%= javascript_include_tag "jquery.countdown.pack.js" %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#countdown').countdown({until:+300, format: 'DHMS', layout: 
+        '<div id="timer">' + '<hr />'+
+        '<div id="timer_hours" class="timer_numbers">{mnn}</div>'+ 
+        '<div id="timer_mins" class="timer_numbers">{snn}</div>'+
+        '<div id="timer_labels">'+
+        '<div id="timer_days_label" class="timer_labels">mins</div>'+
+        '<div id="timer_hours_label" class="timer_labels">secs</div>'+
+        '</div>'+
+        '</div>'
+      });
+      $('#pause').toggle(function() { 
+        $(this).val('Start'); 
+        $('#countdown').countdown('pause');
+      }, 
+      function() { 
+        $(this).val('Pause'); 
+        $('#countdown').countdown('resume'); 
+      });
+      $("#pause").click();
+      $("#restart").click(function() {
+        $('#countdown').countdown('resume'); 
+        $('#countdown').countdown('change', {until: +300});
+      })
+    });
+  </script>
+</html>

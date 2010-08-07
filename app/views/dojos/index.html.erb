@@ -1,0 +1,9 @@
+<h1>Escolha um dojo</h1>
+
+<ul>
+  <% @dojos.each do |dojo| %>
+    <li><%= link_to(dojo.name, dojo_url(dojo))%></li>
+  <% end %>
+</ul>
+
+<h2><%= link_to("Ou crie o seu", new_dojo_url)%></h2>
