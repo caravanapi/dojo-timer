@@ -21,11 +21,4 @@ describe Dojo do
   it "should has many users" do
     subject.users.should == [user]
   end
-
-  it 'should receive same users by twitter' do
-    Twitter.should_receive(:user).with('caironoleto')
-    Twitter.should_receive(:user).with('dmitrynix')
-    subject.user_twitters = 'caironoleto, dmitrynix'
-    subject.should have_at_least(2).users
-  end
 end
